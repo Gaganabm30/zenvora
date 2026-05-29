@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ZenvoraBackground from '../components/ZenvoraBackground';
 import { 
@@ -525,51 +525,13 @@ const TaskBoardPage = () => {
         setTasks(data);
       }
     } catch (err) {
-      console.warn('Utilizing local storage for offline state:');
+      console.warn('Backend offline — starting with empty task list.');
+      // Do NOT seed fake tasks. Pull from localStorage only if tasks exist for this session.
       const saved = localStorage.getItem('zenvora_tasks_v2');
       if (saved) {
-        setTasks(JSON.parse(saved));
+        try { setTasks(JSON.parse(saved)); } catch (e) { setTasks([]); }
       } else {
-        const initialTasks = [
-          { 
-            _id: 't1', 
-            title: 'Verify cluster database connection nodes', 
-            description: '# Technical scope\n\nConfigure primary database structures and verify TLS socket pipelines.', 
-            status: 'todo', 
-            priority: 'critical', 
-            category: 'coding', 
-            estimatedTime: 45,
-            dueDate: new Date(Date.now() - 86400000 * 2).toISOString(), 
-            subtasks: [{ title: 'Design models schemas', completed: true }, { title: 'Test latency', completed: false }],
-            tags: ['mern', 'database']
-          },
-          { 
-            _id: 't2', 
-            title: 'Design premium glassmorphic sidebar layout', 
-            description: 'Apply backdrop blurs, HSL lavender glows, and layout spacing structures.', 
-            status: 'in_progress', 
-            priority: 'high', 
-            category: 'design', 
-            estimatedTime: 60,
-            dueDate: new Date(Date.now() + 86400000 * 3).toISOString(), 
-            subtasks: [],
-            tags: ['ui-polish']
-          },
-          { 
-            _id: 't3', 
-            title: 'Audit telemetry static import indexes', 
-            description: 'Archive landing illustrations and clean up local imports.', 
-            status: 'done', 
-            priority: 'low', 
-            category: 'admin', 
-            estimatedTime: 20,
-            dueDate: new Date().toISOString(), 
-            subtasks: [],
-            tags: ['cleanup']
-          }
-        ];
-        setTasks(initialTasks);
-        localStorage.setItem('zenvora_tasks_v2', JSON.stringify(initialTasks));
+        setTasks([]);
       }
     } finally {
       setLoading(false);

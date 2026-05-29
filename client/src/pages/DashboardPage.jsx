@@ -153,14 +153,8 @@ const DashboardPage = () => {
           setWellnessLogs(wellnessData);
         }
       } catch (err) {
-        console.warn('Backend offline, utilizing client demo data:');
-        const defaultTasks = [
-          { _id: '1', title: 'Implement MERN index controllers', status: 'todo', priority: 'high', dueDate: new Date(Date.now() - 86400000) },
-          { _id: '2', title: 'Design satin glassmorphism components', status: 'in_progress', priority: 'medium', dueDate: new Date(Date.now() + 86400000) },
-          { _id: '3', title: 'Configure Socket server rooms', status: 'done', priority: 'high', dueDate: new Date() },
-          { _id: '4', title: 'Test user onboarding sliders', status: 'done', priority: 'low', dueDate: new Date() }
-        ];
-        setTasks(defaultTasks);
+        console.warn('Backend offline — starting with empty task list.');
+        // Do NOT load fake data. New accounts must start clean.
       } finally {
         setLoading(false);
       }

@@ -195,6 +195,9 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('zenvora_tasks_v2');
+    localStorage.removeItem('zenvora_tasks');
+    localStorage.removeItem('zenvora_wellness_logs');
     setToken('');
     setUser(null);
   };
