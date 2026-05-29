@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="client/public/logo_icon.png" alt="Zenvora Logo" width="100"/>
 
 # ZENVORA
 
