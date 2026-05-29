@@ -44,50 +44,7 @@ const DashboardPage = () => {
         onboardingCompleted: true
       });
 
-      const initialTasks = [
-        {
-          title: "🎯 Complete your first 25-minute deep focus cycle",
-          description: "Use the custom radial Focus Timer to log deep work slots today.",
-          priority: "high",
-          status: "todo",
-          dueDate: new Date(Date.now() + 86400000)
-        },
-        {
-          title: "🧬 Review stress telemetry in the wellness core",
-          description: "Perform your first self-care mindfulness entry using the daily logs grid.",
-          priority: "medium",
-          status: "todo",
-          dueDate: new Date(Date.now() + 172800000)
-        },
-        {
-          title: "⚡ Ask Zenvora Core for performance insights",
-          description: "Interact with your futuristic NLP helper on the AI Assistant screen.",
-          priority: "low",
-          status: "todo",
-          dueDate: new Date(Date.now() + 259200000)
-        }
-      ];
-
-      for (const t of initialTasks) {
-        try {
-          await fetch(`${API_HOST}/api/tasks`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(t)
-          });
-        } catch (err) {
-          console.warn("Failed seeding task on backend:", err);
-        }
-      }
-
-      localStorage.setItem('zenvora_tasks_v2', JSON.stringify([
-        { _id: 'seed_1', title: "🎯 Complete your first 25-minute deep focus cycle", description: "Use the custom radial Focus Timer to log deep work slots today.", status: 'todo', priority: 'high', dueDate: new Date(Date.now() + 86400000) },
-        { _id: 'seed_2', title: "🧬 Review stress telemetry in the wellness core", description: "Perform your first self-care mindfulness entry using the daily logs grid.", status: 'todo', priority: 'medium', dueDate: new Date(Date.now() + 172800000) },
-        { _id: 'seed_3', title: "⚡ Ask Zenvora Core for performance insights", description: "Interact with your futuristic NLP helper on the AI Assistant screen.", status: 'todo', priority: 'low', dueDate: new Date(Date.now() + 259200000) }
-      ]));
+      // No seed tasks — users start with a completely empty task board.
 
       try {
         await fetch(`${API_HOST}/api/wellness`, {
