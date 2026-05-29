@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoImg from '../assets/logo.png';
 import logoIconImg from '../assets/logo_icon.png';
 import { Sparkles, LogIn, UserPlus, ArrowRight, Lock } from 'lucide-react';
 
