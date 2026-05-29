@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ZenvoraBackground from '../components/ZenvoraBackground';
 import { io } from 'socket.io-client';
@@ -193,7 +193,7 @@ const TeamCollaborationPage = () => {
   };
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto relative h-screen">
+    <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen">
       <ZenvoraBackground mode="diagonal" />
 
       <div className="max-w-6xl mx-auto space-y-6 z-10 relative">

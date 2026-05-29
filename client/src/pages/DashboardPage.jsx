@@ -502,7 +502,7 @@ const DashboardPage = () => {
   }
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto relative h-screen bg-zenvora-bg">
+    <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen bg-zenvora-bg">
       <ZenvoraBackground mode="centered" />
 
       <div className="max-w-6xl mx-auto space-y-10 z-10 relative">
@@ -510,7 +510,7 @@ const DashboardPage = () => {
         {/* Workspace Header */}
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="text-left">
-            <h1 className="text-4xl font-extrabold text-slate-800 tracking-tight flex items-center gap-2.5">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 tracking-tight flex items-center gap-2.5">
               <span>Performance Hub</span>
               <Sparkles className="w-7 h-7 text-zenvora-500 animate-float" />
             </h1>

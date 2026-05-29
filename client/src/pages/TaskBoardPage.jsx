@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ZenvoraBackground from '../components/ZenvoraBackground';
 import { 
@@ -894,7 +894,7 @@ const TaskBoardPage = () => {
   for (let i = 1; i <= totalMonthDays; i++) calendarCells.push(i);
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto relative h-screen bg-zenvora-bg text-left">
+    <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen bg-zenvora-bg text-left">
       <ZenvoraBackground mode="vertical" />
 
       {/* Floating Canvas for Particle explosions */}

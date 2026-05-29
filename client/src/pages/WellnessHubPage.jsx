@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ZenvoraBackground from '../components/ZenvoraBackground';
 import { Sparkles, Heart, Activity, ShieldAlert, CheckCircle, Info } from 'lucide-react';
@@ -95,7 +95,7 @@ const WellnessHubPage = () => {
   const latestLog = logs[0] || { burnoutRiskScore: 20, stressLevel: 5 };
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto relative h-screen">
+    <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen">
       <ZenvoraBackground mode="diagonal" />
 
       <div className="max-w-6xl mx-auto space-y-6 z-10 relative">

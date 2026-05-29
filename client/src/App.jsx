@@ -62,6 +62,8 @@ const AppContent = () => {
 
       {/* Main Viewport */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* Spacer so content clears the fixed mobile top bar */}
+        {showSidebar && <div className="md:hidden h-14 shrink-0" />}
         <Routes>
           {/* Public — landing page (no sidebar, no redirect even if logged in) */}
           <Route path="/" element={<LandingPage />} />

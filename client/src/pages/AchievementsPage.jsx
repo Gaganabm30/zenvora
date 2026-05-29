@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ZenvoraBackground from '../components/ZenvoraBackground';
 import { 
@@ -248,7 +248,7 @@ const AchievementsPage = () => {
 
   if (loading) {
     return (
-      <div className="flex-1 p-8 overflow-y-auto relative h-screen bg-slate-50/50 flex flex-col items-center justify-center gap-4 text-slate-800">
+      <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen bg-slate-50/50 flex flex-col items-center justify-center gap-4 text-slate-800">
         <ZenvoraBackground mode="mesh" />
         <RefreshCw className="w-12 h-12 text-violet-600 animate-spin" />
         <h2 className="text-xl font-bold tracking-tight">Synchronizing Gamified Milestones...</h2>
@@ -259,7 +259,7 @@ const AchievementsPage = () => {
 
   if (error) {
     return (
-      <div className="flex-1 p-8 overflow-y-auto relative h-screen bg-slate-50/50 flex flex-col items-center justify-center gap-4 text-slate-800">
+      <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen bg-slate-50/50 flex flex-col items-center justify-center gap-4 text-slate-800">
         <ZenvoraBackground mode="mesh" />
         <AlertTriangle className="w-16 h-16 text-rose-500 animate-pulse" />
         <h2 className="text-2xl font-black">Connection Sync Failure</h2>
@@ -277,7 +277,7 @@ const AchievementsPage = () => {
   }
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto relative h-screen text-slate-800">
+    <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen text-slate-800">
       <ZenvoraBackground mode="mesh" />
 
       <div className="max-w-6xl mx-auto space-y-8 z-10 relative pb-16">

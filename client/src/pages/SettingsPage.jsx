@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ZenvoraBackground from '../components/ZenvoraBackground';
 import { 
@@ -144,7 +144,7 @@ const SettingsPage = () => {
   ];
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto relative h-screen text-slate-800">
+    <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto relative h-screen text-slate-800">
       <ZenvoraBackground mode="mesh" />
 
       <div className="max-w-5xl mx-auto space-y-8 z-10 relative pb-16">
