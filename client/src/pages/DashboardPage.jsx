@@ -92,35 +92,63 @@ const DashboardPage = () => {
 
   useEffect(() => {
     const loadDashboardData = async () => {
+      let tasksData = null;
+      let wellnessData = null;
+
       try {
         const tasksRes = await fetch(`${API_HOST}/api/tasks`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
-        let tasksData = [];
         if (tasksRes.ok) {
           tasksData = await tasksRes.json();
-          setTasks(tasksData);
         }
+      } catch (err) {
+        console.warn('Backend tasks API offline — checking local fallback.');
+      }
 
+      try {
         const wellnessRes = await fetch(`${API_HOST}/api/wellness`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (wellnessRes.ok) {
-          const wellnessData = await wellnessRes.json();
-          setWellnessLogs(wellnessData);
+          wellnessData = await wellnessRes.json();
         }
       } catch (err) {
-        console.warn('Backend offline — starting with empty task list.');
-        // Do NOT load fake data. New accounts must start clean.
-      } finally {
-        setLoading(false);
+        console.warn('Backend wellness API offline — checking local fallback.');
       }
+
+      // Fallback to localStorage if API failed or returned empty
+      if (!tasksData || tasksData.length === 0) {
+        try {
+          const saved = localStorage.getItem('zenvora_tasks_v2');
+          if (saved) {
+            tasksData = JSON.parse(saved);
+          }
+        } catch (e) {
+          console.error("Failed to parse local tasks", e);
+        }
+      }
+
+      if (!wellnessData || wellnessData.length === 0) {
+        try {
+          const savedWellness = localStorage.getItem('zenvora_wellness_logs');
+          if (savedWellness) {
+            wellnessData = JSON.parse(savedWellness);
+          }
+        } catch (e) {
+          console.error("Failed to parse local wellness logs", e);
+        }
+      }
+
+      setTasks(tasksData || []);
+      setWellnessLogs(wellnessData || []);
+      setLoading(false);
     };
 
     if (user) {
       loadDashboardData();
     }
-  }, [user, token]);
+  }, [user, token, API_HOST]);
 
   // Calculations
   const tCount = tasks.length;
